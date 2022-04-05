@@ -30,26 +30,36 @@ def read_sensor_values:
     sensor[3] = int(LineSensor3.value)
     if (sensor[0] == 1) and (sensor[1] == 0) and (sensor[2] == 0) and (sensor[3] == 0):
         e = 3
+        return e
     elif ((sensor[0] == 1) and (sensor[1] == 1) and (sensor[2] == 0) and (sensor[3] == 0)):
         e = 2
+        return e
     elif ((sensor[0] == 0) and (sensor[1] == 1) and (sensor[2] == 0) and (sensor[3] == 0)):
         e = 1
+        return e
     elif ((sensor[0] == 0) and (sensor[1] == 1) and (sensor[2] == 1) and (sensor[3] == 0)):
         e = 0
+        return e
     elif ((sensor[0] == 0) and (sensor[1] == 0) and (sensor[2] == 1) and (sensor[3] == 0)):
         e = -1
+        return e
     elif ((sensor[0] == 0) and (sensor[1] == 0) and (sensor[2] == 1) and (sensor[3] == 1)):
         e = -2
+        return e
     elif ((sensor[0] == 0) and (sensor[1] == 0) and (sensor[2] == 0) and (sensor[3] == 1)):
         e = -3
+        return e
     # Turn robot left side
     elif ((sensor[0] == 1) and (sensor[1] == 1) and (sensor[2] == 1) and (sensor[3] == 0)):
         e = 4
+        return e
     # Turn robot right side
     elif ((sensor[0] == 0) and (sensor[1] == 1) and (sensor[2] == 1) and (sensor[3] == 1)):
         e = -4
+        return e
     elif ((sensor[0] == 0) and (sensor[1] == 0) and (sensor[2] == 0) and (sensor[3] == 0)):  # Make U turn
         e = 5
+        return e
 
 
 def calculate_pid:
@@ -84,7 +94,7 @@ def motor_control:
 
 
 while True:
-    read_sensor_values()
+    e=read_sensor_values()
     print(e)
     if e == 6:
         e = 0
